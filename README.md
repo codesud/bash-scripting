@@ -42,15 +42,20 @@ Cyan              36                  46
 
 ### Redirectors :
 ```
->   : Standard Output to a file : ( This will override the existing content on the file : > = 1> )
->>  : Standard Output to a file : ( But, this will not override, just appends on the top of the file )
+>   : Standard Output to a file : ( This will override the existing content on the 
+file : > = 1> )
+>>  : Standard Output to a file : ( But, this will not override, just appends on the
+top of the file )
 
 2>  : Standard Error to a file  
 
 &>  : Redirects both standard output and standard error
-&>> : Redirects both standard output and standard error, but appends on the top of the exiting content.
-Exit Status : Every command that you execute will return some status code and based on that code we can decide whether 
-the command is success / failure /partially completed and the command to see the exit code of the previous command is $?
+&>> : Redirects both standard output and standard error, but appends on the top of 
+the exiting content.
+Exit Status : Every command that you execute will return some status code and based
+on that code we can decide whether 
+the command is success / failure /partially completed and the command to see the exit
+code of the previous command is $?
 ```
 
 In Linux, exit codes range from 0 to 255.
@@ -149,10 +154,12 @@ else echo Thanks
 fi -->
 ```
 
-### Makefile is a industry standard wrapper for calling scripts, warns us in case of no changes and some meaningful errors
+### Makefile is a industry standard wrapper for calling scripts, warns us in case of no changes
+and some meaningful errors
 ```
 What standards do we follow while developing the code?
-1) I want tht script to be run as a ROOT user, without which I want to give user a ERROR Message stating Run it as root or sudo user. 
+1) I want tht script to be run as a ROOT user, without which I want to give user a ERROR Message
+ stating Run it as root or sudo user. 
 2) I also need success or failure messages for all the steps.
 3) If any of the steps fails, I want my script to exit completely and don't want to proceed.
 4) We also need to ensure, that re-run of the script should work.
@@ -161,8 +168,9 @@ What standards do we follow while developing the code?
 
 ### **** V.IMP ****
 ```
-When dealing with internal DNS Records, if you delete XYZ Record and recreate it, sometimes they won't work.
+When dealing with internal DNS Records, if you delete XYZ Record and recreate it, sometimes
+they won't work.
 Always prefer not to delete, instead just update.
 ```
-In Linux, there is a concept called as strict host key checking. This festure will prompt you when you SSH to any of the machine for the very first time, 
-do you want to proceed ? Yes or No
+In Linux, there is a concept called as strict host key checking. This festure will prompt you
+when you SSH to any of the machine for the very first time, do you want to proceed ? Yes or No
