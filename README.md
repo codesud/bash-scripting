@@ -49,7 +49,8 @@ Cyan              36                  46
 
 &>  : Redirects both standard output and standard error
 &>> : Redirects both standard output and standard error, but appends on the top of the exiting content.
-Exit Status : Every command that you execute will return some status code and based on that code we can decide whether the command is success / failure /partially completed and the command to see the exit code of the previous command is $?
+Exit Status : Every command that you execute will return some status code and based on that code we can decide whether 
+the command is success / failure /partially completed and the command to see the exit code of the previous command is $?
 ```
 
 In Linux, exit codes range from 0 to 255.
@@ -118,6 +119,7 @@ fi
 ```
 
 ### Operators on Strings:
+```
 = , == , !=
 
 [ abc = abc ]
@@ -134,10 +136,10 @@ Lot of operators are available and you can check them using man pages of bash
 [ -f file ] -> True of file exists and file is a regular file 
 
 [ -d xyz ]  -> True if file exists and it is a directory
+```
 
 ### Explore the file types, There are 7 types on files in Linux.
-
-
+```
 ACTION=$1
 
 if [ -z "$ACTION" ]; then echo Argument is needed, Either start/stop
@@ -145,10 +147,11 @@ if [ -z "$ACTION" ]; then echo Argument is needed, Either start/stop
 else echo Thanks
 
 fi -->
+```
 
 ### Makefile is a industry standard wrapper for calling scripts, warns us in case of no changes and some meaningful errors
-What standards do we follow while developing the code?
 ```
+What standards do we follow while developing the code?
 1) I want tht script to be run as a ROOT user, without which I want to give user a ERROR Message stating Run it as root or sudo user. 
 2) I also need success or failure messages for all the steps.
 3) If any of the steps fails, I want my script to exit completely and don't want to proceed.
@@ -161,4 +164,5 @@ What standards do we follow while developing the code?
 When dealing with internal DNS Records, if you delete XYZ Record and recreate it, sometimes they won't work.
 Always prefer not to delete, instead just update.
 ```
-In Linux, there is a concept called as strict host key checking. This festure will prompt you when you SSH to any of the machine for the very first time, do you want to proceed ? Yes or No
+In Linux, there is a concept called as strict host key checking. This festure will prompt you when you SSH to any of the machine for the very first time, 
+do you want to proceed ? Yes or No
