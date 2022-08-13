@@ -155,7 +155,7 @@ fi -->
 ```
 
 ### Makefile is a industry standard wrapper for calling scripts, warns us in case of no changes
-and some meaningful errors
+### and some meaningful errors
 ```
 What standards do we follow while developing the code?
 1) I want tht script to be run as a ROOT user, without which I want to give user a ERROR Message
