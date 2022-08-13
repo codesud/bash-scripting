@@ -4,6 +4,7 @@
 a=10 
 
 echo $a 
+echo "$?"
 
 echo ${a}
 
