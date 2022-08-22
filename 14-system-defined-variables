@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Bash system defined variables
+echo $HOME
+echo $PWD
+echo $BASH
+echo $BASH_VERSION
+echo $LOGNAME
+echo $OSTYPE
