@@ -25,7 +25,7 @@ stat $?
 cd /home/roboshop
 
 echo -n "Extracting $COMPONENT: "
-unzip /tmp/$COMPONENT.zip &>> LOGFILE
+unzip -o /tmp/$COMPONENT.zip &>> LOGFILE
 mv $COMPONENT-main $COMPONENT
 stat $?
 
