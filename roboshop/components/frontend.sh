@@ -2,7 +2,7 @@
 
 set -e
 COMPONENT=frontend
-LOGFILE="temp/$COMPONENT.log"
+LOGFILE="/temp/$COMPONENT.log"
 
 source components/common.sh
 
