@@ -33,7 +33,7 @@ stat $?
 cd /tmp
 
 echo -n "Extracting $COMPONENT code: "
-unzip mongodb.zip &>> LOGFILE
+unzip -o mongodb.zip &>> LOGFILE
 stat $?
 
 cd mongodb-main
