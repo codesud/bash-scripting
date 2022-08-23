@@ -15,7 +15,15 @@ else
 fi
 
 systemctl enable nginx
+
+echo -n "Starting Nginx :"
 systemctl start nginx
+if [ $? -eq 0 ] ; then
+    echo -e "\e[32m SUCCESS \e[0m"
+else 
+    echo -e "\e[31m FAILURE \e[0m"
+fi
+
 curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
 cd /usr/share/nginx/html
 rm -rf *
