@@ -1,10 +1,19 @@
 #!/bin/bash
 
 set -e
+COMPONENT=frontend
+LOGFILE="temp/$COMPONENT.log"
 
-source ./common.sh
+source components/common.sh
 
-yum install nginx -y
+echo -n "Installing Nginx :"
+yum install nginx -y &>> LOGFILE
+if [ $? -eq 0 ] ; then
+    echo -e "\e[32m SUCCESS \e[0m"
+else 
+    echo -e "\e[31m FAILURE \e[0m"
+fi
+
 systemctl enable nginx
 systemctl start nginx
 curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
