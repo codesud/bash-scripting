@@ -16,13 +16,13 @@ echo -n "Installing $COMPONENT :"
 yum install -y mongodb-org &>> LOGFILE
 stat $? 
 
+echo -n "Updating $COMPONENT Listening address :"
+sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
+stat $?
+
 echo -n "Starting $COMPONENT :"
 systemctl enable mongod &>> LOGFILE
 systemctl restart mongod &>> LOGFILE
-stat $?
-
-echo -n "Updating $COMPONENT Listening address :"
-sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
 stat $?
 
 echo -e " ___________ \e[32m $COMPONENT Configuration is completed \e[0m ___________ "
