@@ -15,7 +15,7 @@ yum install nodejs -y &>> LOGFILE
 stat $?
 
 echo -n "Creating the roboshop user: "
-useradd roboshop
+id roboshop &>> LOGFILE || useradd roboshop
 stat $?
 
 echo -n "Downloading $COMPONENT repo: "
