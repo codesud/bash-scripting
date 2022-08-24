@@ -3,6 +3,7 @@
 set -e
 COMPONENT=frontend
 LOGFILE="/temp/$COMPONENT.log"
+$APPUSER=roboshopdirect
 
 source components/common.sh
 
