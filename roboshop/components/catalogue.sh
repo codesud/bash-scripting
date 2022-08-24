@@ -3,6 +3,7 @@
 set -e
 COMPONENT=catalogue
 LOGFILE="/temp/$COMPONENT.log"
+APPUSER=roboshop
 
 source components/common.sh
 
@@ -14,8 +15,8 @@ echo -n "Installing NodeJS repo: "
 yum install nodejs -y &>> LOGFILE
 stat $?
 
-echo -n "Creating the roboshop user: "
-id roboshop &>> LOGFILE || useradd roboshop
+echo -n "Creating the $APPUSER user: "
+id $APPUSER &>> LOGFILE || useradd $APPUSER
 stat $?
 
 echo -n "Downloading $COMPONENT repo: "
@@ -23,16 +24,15 @@ curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPO
 stat $?
 
 echo -n "Performing $COMPONENT cleanup: "
-cd /home/roboshop && rm -rf $COMPONENT &>> LOGFILE
+cd /home/$APPUSER && rm -rf $COMPONENT &>> LOGFILE
 stat $?
 
 echo -n "Extracting $COMPONENT: "
-cd /home/roboshop
+cd /home/$APPUSER
 unzip -o /tmp/$COMPONENT.zip &>> LOGFILE
-mv $COMPONENT-main $COMPONENT
+mv $COMPONENT-main $COMPONENT && chown -R $APPUSER:$APPUSER $COMPONENT
+cd $COMPONENT
 stat $?
-
-cd /home/roboshop/$COMPONENT
 
 echo -n "Installing $COMPONENT: "
 npm install &>> LOGFILE 
@@ -43,7 +43,7 @@ stat $?
 #     Update `MONGO_DNSNAME` with MongoDB Server IP
 #     $ vim systemd.servce
 
-    # mv /home/roboshop/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
+    # mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
 # systemctl daemon-reload
 # systemctl start $COMPONENT
 # systemctl enable $COMPONENT
@@ -63,7 +63,7 @@ stat $?
 # **`Note:`** Do not do a copy and paster of IP in the proxy file, there are high chances to enter the empty space characters, which are not visible on the vim editor. Manual Typing of IP Address/ DNS Name is preferred. 
 
 
-# > # vim /etc/nginx/default.d/roboshop.conf
+# > # vim /etc/nginx/default.d/$APPUSER.conf
 # > 
 
 # 1. Reload and restart the Nginx service.
