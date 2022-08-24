@@ -38,16 +38,18 @@ echo -n "Installing $COMPONENT: "
 npm install &>> LOGFILE 
 stat $?
 
-# 1. Update SystemD file with correct IP addresses
-    
-#     Update `MONGO_DNSNAME` with MongoDB Server IP
-#     $ vim systemd.servce
+echo -n "Configuring $COMPONENT service: "
+sed -e -i 's/MONGO_DNSNAME/mongodb.roboshop.internal' systemd.service
+mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
+stat $?
 
-    # mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
-# systemctl daemon-reload
-# systemctl start $COMPONENT
-# systemctl enable $COMPONENT
-# systemctl status $COMPONENT -l
+echo -n "Starting $COMPONENT service: "
+systemctl daemon-reload
+systemctl start $COMPONENT
+systemctl enable $COMPONENT &>> LOGFILE
+systemctl status $COMPONENT -l &>> LOGFILE
+stat $?
+
 
 # NOTE: You should see the log saying `connected to MongoDB`, then only your $COMPONENT
 # will work and can fetch the items from MongoDB
