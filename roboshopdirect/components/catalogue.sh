@@ -3,7 +3,7 @@
 set -e
 COMPONENT=catalogue
 LOGFILE="/temp/$COMPONENT.log"
-APPUSER=roboshop
+APPUSER=roboshopdirect
 
 source components/common.sh
 
