@@ -22,9 +22,12 @@ echo -n "Downloading $COMPONENT repo: "
 curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
 stat $?
 
-cd /home/roboshop
+echo -n "Performing $COMPONENT cleanup: "
+cd /home/roboshop && rm -rf $COMPONENT &>> LOGFILE
+stat $?
 
 echo -n "Extracting $COMPONENT: "
+cd /home/roboshop
 unzip -o /tmp/$COMPONENT.zip &>> LOGFILE
 mv $COMPONENT-main $COMPONENT
 stat $?
