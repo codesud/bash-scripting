@@ -66,7 +66,7 @@ DOWNLOAD_AND_EXTRACT() {
 
 CONFIG_SERVICE() {
     echo -n "Configuring $COMPONENT service: "
-    sed -i -e "s/AMQPHOST/rabbitmq.$APPUSER_RECORD.internal/" -e "s/USERHOST/user.$APPUSER_RECORD.internal/" -e "s/CARTHOST/cart.$APPUSER_RECORD.internal/" -e "s/DBHOST/mysql.$APPUSER_RECORD.internal/" -e "s/CARTENDPOINT/cart.$APPUSER_RECORD.internal/" -e "s/CATALOGUE_ENDPOINT/catalogue.$APPUSER_RECORD.internal/" -e "s/REDIS_ENDPOINT/redis.$APPUSER_RECORD.internal/" -e "s/REDIS_ENDPOINT/redis.$APPUSER_RECORD.internal/"  -e "s/MONGO_ENDPOINT/mongodb.$APPUSER_RECORD.internal/" -e "s/MONGO_DNSNAME/mongodb.$APPUSER_RECORD.internal/" systemd.service
+    sed -i -e 's/AMQPHOST/rabbitmq.roboshopdirect.internal/' -e 's/USERHOST/user.roboshopdirect.internal/' -e 's/CARTHOST/cart.roboshopdirect.internal/' -e 's/DBHOST/mysql.roboshopdirect.internal/' -e 's/CARTENDPOINT/cart.roboshopdirect.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshopdirect.internal/' -e 's/REDIS_ENDPOINT/redis.roboshopdirect.internal/' -e 's/REDIS_ENDPOINT/redis.roboshopdirect.internal/'  -e 's/MONGO_ENDPOINT/mongodb.roboshopdirect.internal/' -e 's/MONGO_DNSNAME/mongodb.roboshopdirect.internal/' systemd.service
     mv /home/$APPUSER/$COMPONENT/systemd.service  /etc/systemd/system/$COMPONENT.service
     stat $?
 
