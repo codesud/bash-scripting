@@ -11,7 +11,7 @@ curl -L https://raw.githubusercontent.com/stans-robot-project/$COMPONENT/main/$C
 stat $?
 
 echo -n "Installing $COMPONENT : "
-# yum install redis-6.2.7 -y
+yum install redis-6.2.7 -y &>> LOGFILE
 stat $?
 
 echo -n "Updating $COMPONENT Listening address: "
