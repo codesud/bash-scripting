@@ -3,6 +3,8 @@
 set -e
 COMPONENT=frontend
 LOGFILE="/temp/$COMPONENT.log"
+APPUSER=roboshop
+APPUSER_RECORD=roboshopdirect
 
 source components/common.sh
 
@@ -35,5 +37,14 @@ mv static/* .
 rm -rf frontend-main README.md
 mv localhost.conf /etc/nginx/default.d/$APPUSER.conf
 stat $? 
+
+echo -n "Configuring the proxy file: "
+sed -i  -e "/payment/s/localhost/payment.$APPUSER_RECORD.internal/" -e "/shipping/s/localhost/shipping.$APPUSER_RECORD.internal/" -e "/user/s/localhost/user.$APPUSER_RECORD.internal/" -e "/cart/s/localhost/cart.$APPUSER_RECORD.internal/" -e "/catalogue/s/localhost/catalogue.$APPUSER_RECORD.internal/' /etc/nginx/default.d/$APPUSER.conf
+stat $?
+
+echo -n "Retarting Nginx: "
+systemctl restart nginx
+stat $?
+
 
 echo -e " ___________ \e[32m $COMPONENT Configuration is completed \e[0m ___________ "

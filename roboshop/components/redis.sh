@@ -4,6 +4,7 @@ set -e
 COMPONENT=redis
 LOGFILE="/temp/$COMPONENT.log"
 
+
 source components/common.sh
 
 echo -n "Configuring $COMPONENT repo: "
