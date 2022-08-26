@@ -36,8 +36,8 @@ NODEJS() {
     # Calling CONFIG_SERVICE function
     CONFIG_SERVICE
 
-    # Calling CONFIG_SERVICE function
-
+    # Calling START_SERVICE function
+    START_SERVICE
 }
 
 CREATE_USER() {

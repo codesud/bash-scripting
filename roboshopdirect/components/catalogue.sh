@@ -9,3 +9,5 @@ source components/common.sh
 
 # Calling NODEJS function
 NODEJS
+
+echo -e " ___________ \e[32m $COMPONENT Configuration is completed \e[0m ___________ "
