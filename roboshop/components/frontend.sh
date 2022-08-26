@@ -39,7 +39,7 @@ mv localhost.conf /etc/nginx/default.d/$APPUSER.conf
 stat $? 
 
 echo -n "Configuring the proxy file: "
-sed -i  -e "/payment/s/localhost/payment.$APPUSER_RECORD.internal/" -e "/shipping/s/localhost/shipping.$APPUSER_RECORD.internal/" -e "/user/s/localhost/user.$APPUSER_RECORD.internal/" -e "/cart/s/localhost/cart.$APPUSER_RECORD.internal/" -e "/catalogue/s/localhost/catalogue.$APPUSER_RECORD.internal/' /etc/nginx/default.d/$APPUSER.conf
+sed -i  -e '/payment/s/localhost/payment.roboshopdirect.internal/' -e '/shipping/s/localhost/shipping.roboshopdirect.internal/' -e '/user/s/localhost/user.roboshopdirect.internal/' -e '/cart/s/localhost/cart.roboshopdirect.internal/' -e '/catalogue/s/localhost/catalogue.roboshopdirect.internal/' /etc/nginx/default.d/roboshop.conf
 stat $?
 
 echo -n "Retarting Nginx: "
