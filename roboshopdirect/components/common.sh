@@ -67,7 +67,7 @@ DOWNLOAD_AND_EXTRACT() {
 CONFIG_SERVICE() {
     echo -n "Configuring $COMPONENT service: "
     sed -i -e "s/AMQPHOST/rabbitmq.$APPUSER.internal/" -e "s/USERHOST/user.$APPUSER.internal/" -e "s/CARTHOST/cart.$APPUSER.internal/" -e "s/DBHOST/mysql.$APPUSER.internal/" -e "s/CARTENDPOINT/cart.$APPUSER.internal/" -e "s/CATALOGUE_ENDPOINT/catalogue.$APPUSER.internal/" -e "s/REDIS_ENDPOINT/redis.$APPUSER.internal/" -e "s/REDIS_ENDPOINT/redis.$APPUSER.internal/"  -e "s/MONGO_ENDPOINT/mongodb.$APPUSER.internal/" -e "s/MONGO_DNSNAME/mongodb.$APPUSER.internal/" systemd.service
-    mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
+    mv /home/$APPUSER/$COMPONENT/systemd.service  /etc/systemd/system/$COMPONENT.service
     stat $?
 
 }
