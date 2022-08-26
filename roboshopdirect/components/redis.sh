@@ -6,8 +6,8 @@ LOGFILE="/temp/$COMPONENT.log"
 
 source components/common.sh
 
-echo -n "Downloading $COMPONENT repo: "
-# curl -L https://raw.githubusercontent.com/stans-robot-project/redis/main/redis.repo -o /etc/yum.repos.d/redis.repo
+echo -n "Configuring $COMPONENT repo: "
+curl -L https://raw.githubusercontent.com/stans-robot-project/$COMPONENT/main/$COMPONENT.repo -o /etc/yum.repos.d/$COMPONENT.repo
 stat $?
 
 echo -n "Installing $COMPONENT : "
