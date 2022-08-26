@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-COMPONENT=catalogue
+COMPONENT=user
 LOGFILE="/temp/$COMPONENT.log"
 APPUSER=roboshopdirect
 

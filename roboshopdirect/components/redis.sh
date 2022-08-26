@@ -18,6 +18,7 @@ echo -n "Updating $COMPONENT Listening address: "
 sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/$COMPONENT.conf /etc/$COMPONENT/$COMPONENT.conf
 stat $?
 
+# Calling the START_SERVICE function
 START_SERVICE
 
 echo -e " ___________ \e[32m $COMPONENT Configuration is completed \e[0m ___________ "
