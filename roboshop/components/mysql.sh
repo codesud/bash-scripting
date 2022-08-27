@@ -7,7 +7,7 @@ REPO_URL="https://raw.githubusercontent.com/stans-robot-project/$COMPONENT/main/
 SCHEMA_URL="https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
 
 echo -n "Configuring the $COMPONENT Repo:  "
-curl -s -L -o /etc/yum.repos.d/mysql.repo $REPO_URL 
+curl -s -L -o /etc/yum.repos.d/$COMPONENT.repo $REPO_URL 
 stat $? 
 
 echo -n "Installing $COMPONENT Community Edition: "
