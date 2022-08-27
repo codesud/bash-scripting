@@ -17,16 +17,16 @@ user:
 	sh components/user.sh
 
 mysql:
-	sh components/user.sh
+	sh components/mysql.sh
 
 shipping:
-	sh components/user.sh
+	sh components/shipping.sh
 
 rabbitmq:
-	sh components/user.sh
+	sh components/rabbitmq.sh
 
 payment:
-	sh components/user.sh
+	sh components/payment.sh
 
 dispatch:
-	sh components/user.sh
+	sh components/dispatch.sh
