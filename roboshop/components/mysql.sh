@@ -16,8 +16,8 @@ stat $?
 
 echo -n "Starting the $COMPONENT: "
 systemctl daemon-reload
-systemctl enable mysqld &>> $LOGFILE 
 systemctl restart mysqld &>> $LOGFILE 
+systemctl enable mysqld &>> $LOGFILE 
 stat $? 
 
 # # We need to handle this only for the first time
