@@ -46,4 +46,4 @@ echo -n "Retarting Nginx: "
 systemctl restart nginx
 stat $?
 
-echo -e "\e[32m ____________________$COMPONENT Configuration is completed____________________ \e[0m"
+echo -e "\e[32m ____________________ $COMPONENT Configuration is completed ____________________ \e[0m"

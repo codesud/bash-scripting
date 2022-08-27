@@ -22,4 +22,4 @@ stat $?
 # Calling the START_SERVICE function
 START_SERVICE
 
-echo -e " ___________ \e[32m $COMPONENT Configuration is completed \e[0m ___________ "
+echo -e "\e[32m ____________________ $COMPONENT Configuration is completed ____________________ \e[0m"

@@ -19,8 +19,8 @@ systemctl restart mysqld &>> $LOGFILE
 systemctl enable mysqld &>> $LOGFILE 
 stat $? 
 
-# We need to handle this only for the first time
-echo "show databases" | mysql -uroot -pRoboShop@1 &>> $LOGFILE 
+# We need to handle this only for the first tiILE me
+echo "show databases" | mysql -uroot -pRoboShop@1 &>> $LOGFILE
 if [ 0 -ne $? ]; then 
     echo -n "Changing the default $COMPONENT root password: "
     echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('RoboShop@1');" > /tmp/rootpassword_change.sql
@@ -49,5 +49,6 @@ stat $?
 
 echo -n "Injecting the schema: "
 cd mysql-main && mysql -u root -pRoboShop@1 <shipping.sql &>> $LOGFILE 
+stat $?
 
 echo -e "\e[32m ____________________ $COMPONENT Configuration is completed ____________________ \e[0m"
