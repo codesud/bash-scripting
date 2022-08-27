@@ -50,4 +50,4 @@ stat $?
 echo -n "Injecting the schema: "
 cd mysql-main && mysql -u root -pRoboShop@1 <shipping.sql &>> $LOGFILE 
 
-echo -e " ____________________ \e[32m $COMPONENT Configuration is completed ____________________ \e[0m"
+echo -e "\e[32m ____________________ $COMPONENT Configuration is completed ____________________ \e[0m"
