@@ -14,6 +14,57 @@ stat() {
     fi
 }
 
+PYTHON(){
+    echo -n "Installing Python: "
+    yum install python36 gcc python3-devel -y  &>> $LOGFILE  
+    stat $? 
+
+    #Calling user creation function
+    CREATE_USER
+
+    # Calling Function 
+    DOWNLOAD_AND_EXTRACT 
+
+    echo -n "Installing $COMPONENT: "
+    pip3 install -r requirements.txt &>> $LOGFILE  
+    stat $?
+
+    echo -n "Updating the App Config $COMPONENT.ini: "
+    USER_ID=$(id -u roboshop)
+    GROUP_ID=$(id -g roboshop)
+    sed -i -e "/uid/ c uid = $USER_ID"  -e "/gid/ c gid = $GROUP_ID" $COMPONENT.ini
+    stat $? 
+
+    # Calling Configure Service
+    CONFIG_SERVICE
+
+    # Calling Configure Service
+    START_SERVICE
+
+}
+
+MAVEN(){
+    echo -n "Installing maven: "
+    yum install maven -y &>> $LOGFILE 
+    stat $? 
+
+    #Calling user creation function
+    CREATE_USER
+
+    # Calling Function 
+    DOWNLOAD_AND_EXTRACT 
+
+    echo -n "Packaging the $COMPONENT Artifact: "
+    mvn clean package  &>> $LOGFILE  &&  mv target/$COMPONENT-1.0.jar $COMPONENT.jar
+    stat $?
+
+    # Calling Configure Service
+    CONFIG_SERVICE
+
+    # Calling Configure Service
+    START_SERVICE
+
+}
 NODEJS() {
     echo -n "Configuring NodeJS repo: "
     curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>> LOGFILE
@@ -80,3 +131,4 @@ START_SERVICE() {
     stat $?
 }
 
+ 
