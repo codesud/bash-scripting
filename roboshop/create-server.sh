@@ -9,7 +9,7 @@ PRIVATE_IP=$(aws ec2 run-instances --image-id $AMI_ID --instance-type t2.micro -
 [{Key=Name,Value=${COMPONENT}}]"  | jq '.Instances[].PrivateIpAddress'
 )
 
-echo PRIVATE_IP
+echo $PRIVATE_IP
 
 # #Changing the IPADRESS and DNS Name as per component name
 # sed -e 's/IPADDRESS/${PRIVATE_IP}/' -e 's/COMPONENT/${COMPONENT}/' route53.json > /tmp/record.json
