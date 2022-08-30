@@ -14,12 +14,11 @@ create_server() {
     #Changing the IPADRESS and DNS Name as per component name
     sed -e "s/IPADDRESS/${PRIVATE_IP}/" -e "s/COMPONENT/${COMPONENT}/" route53.json > /tmp/record.json
     aws route53 change-resource-record-sets --hosted-zone-id Z02995003SL9D4FIIDWN4 --change-batch file:///tmp/record.json | jq
-    
-}
 
-if ["$1" == "all"]; then
-    for COMPONENT in catalogue cart user shipping payment frontend mongodb mysql rabbitmq redis ; do
-        COMPONENT=$COMPONENT
+}
+if [ "$1" == "all" ]; then
+    for component in catalogue cart user shipping payment frontend mongodb mysql rabbitmq redis ; do
+        COMPONENT=$component
         create_server
     done
 else
