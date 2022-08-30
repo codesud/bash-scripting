@@ -13,4 +13,4 @@ echo $PRIVATE_IP
 
 #Changing the IPADRESS and DNS Name as per component name
 sed -e "s/IPADDRESS/${PRIVATE_IP}/" -e "s/COMPONENT/${COMPONENT}/" route53.json > /tmp/record.json
-aws route53 change-resource-record-sets --hosted-zone-id Z02995003SL9D4FIIDWN4  --change-batch file:///tmp/record.json | jq
+aws route53 change-resource-record-sets --hosted-zone-id Z02995003SL9D4FIIDWN4 --change-batch file:///tmp/record.json | jq
