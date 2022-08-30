@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# This script creates servers and the associated route53 internal hosted zone records.
+# AMI_ID="ami-0aa718de62aea6fbe"
+# Throw an error if the input is null 
+# Disclaimer: This script works on CENTOS7 Only
+
+#Throw an error if the input is null
+if [ "$1" = "" ]; then 
+    echo -e "\e[31m \n Valid options are component -name or all and env \e[0m \n \e[33m Ex: \n\t bash create-server.sh payment dev \n \e[0m "
+    exit 1
+fi 
+
 COMPONENT=$1
 SGID="sg-09566ba4e8fe56dc5"
 AMI_ID=$(aws ec2 describe-images  --filters "Name=name,Values=DevOps-LabImage-CentOS7" | jq '.Images[].ImageId' | sed -e 's/"//g')
