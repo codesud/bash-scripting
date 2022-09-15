@@ -6,14 +6,15 @@
 # Disclaimer: This script works on CENTOS7 Only
 
 #Throw an error if the input is null
-if [ "$1" = "" ]; then 
-    echo -e "\e[31m \n Valid options are component-name or all \e[0m "
+if [ "$1" = "" ] | [ "$2" = "" ]; then 
+    echo -e "\e[31m \n Valid options are component -name or all and env \e[0m \n \e[33m Ex: \n\t bash create-server.sh payment dev \n \e[0m "
     exit 1
 fi 
 
 COMPONENT=$1
+ENV=$2
 SGID="sg-09566ba4e8fe56dc5"
-AMI_ID=$(aws ec2 describe-images  --filters "Name=name,Values=DevOps-LabImage-CentOS7" | jq '.Images[].ImageId' | sed -e 's/"//g')
+AMI_ID="ami-07d5c32d3ff309659"
 echo $AMI_ID 
 
 create_server() {
@@ -23,7 +24,7 @@ create_server() {
     [{Key=Name,Value=${COMPONENT}}]"  | jq '.Instances[].PrivateIpAddress' | sed -e 's/"//g')
 
     #Changing the IPADRESS and DNS Name as per component name
-    sed -e "s/IPADDRESS/${PRIVATE_IP}/" -e "s/COMPONENT/${COMPONENT}/" route53.json > /tmp/record.json
+    sed -e "s/IPADDRESS/${PRIVATE_IP}/" -e "s/COMPONENT/${COMPONENT}-${ENV}/" route53.json > /tmp/record.json
     aws route53 change-resource-record-sets --hosted-zone-id Z02995003SL9D4FIIDWN4 --change-batch file:///tmp/record.json | jq
 
 }
