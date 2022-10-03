@@ -21,7 +21,7 @@ create_server() {
 
     echo -n "$COMPONENT server creation is in progress"
     PRIVATE_IP=$(aws ec2 run-instances --image-id $AMI_ID --instance-type t2.micro --security-group-id $SGID --tag-specifications "ResourceType=instance,Tags=
-    [{Key=Name,Value=${COMPONENT}}]"  | jq '.Instances[].PrivateIpAddress' | sed -e 's/"//g')
+    [{Key=Name,Value=${COMPONENT}-${ENV}}]"  | jq '.Instances[].PrivateIpAddress' | sed -e 's/"//g')
 
     #Changing the IPADRESS and DNS Name as per component name
     sed -e "s/IPADDRESS/${PRIVATE_IP}/" -e "s/COMPONENT/${COMPONENT}-${ENV}/" route53.json > /tmp/record.json
