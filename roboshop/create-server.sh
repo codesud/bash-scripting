@@ -14,7 +14,7 @@ fi
 COMPONENT=$1
 ENV=$2
 SGID="sg-09566ba4e8fe56dc5"
-AMI_ID="ami-00ff427d936335825"
+AMI_ID="ami-063dd2bd5641ef903"
 echo $AMI_ID 
 
 create_server() {
