@@ -1,8 +1,8 @@
 # bash-scripting
 
 Under the hood:
-AWS instance of Centos7 image, ssh to Windows 11 i5 12th gen HP machine using Xshell7, written on VSCode.
-Github clone on local machine by Gitbash.
+AWS cloud instance of Centos7 image, ssh to Windows 11 i5 12th gen HP local machine using Xshell7, written on VSCode.
+Git clone on local machine by Gitbash.
 
 Bash Scripting Agenda
 
