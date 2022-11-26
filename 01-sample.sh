@@ -10,4 +10,4 @@ echo "Hello"
 
 ## \n : New Line ;  ## \t : Tab Space 
 
-echo -e "Hai\n\tHello"
+echo "Hai\n\tHello"
